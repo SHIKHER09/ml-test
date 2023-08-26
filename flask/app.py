@@ -28,6 +28,7 @@ def home():
 
 @app.route('/chat', methods=['POST'])
 def chat():
+
     user_input = request.form['user_input']
 
     user_input_vec = vectorizer.transform([user_input.lower()])

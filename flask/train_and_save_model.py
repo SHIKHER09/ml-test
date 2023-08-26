@@ -59,6 +59,18 @@ fig = px.bar(x=metrics, y=[scores[metric] for metric in metrics], labels={
              'x': 'Metrics', 'y': 'Score'})
 fig.show()
 
+
+# Save the trained model and vectorizer using pickle
+try:
+    with open('trained_model.pkl', 'wb') as model_file:
+        pickle.dump(model, model_file)
+
+    with open('vectorizer.pkl', 'wb') as vectorizer_file:
+        pickle.dump(vectorizer, vectorizer_file)
+    print("Model and vectorizer saved successfully.")
+except Exception as e:
+    print("An error occurred while saving:", e)
+
 # Prediction Model Deployment
 print("Welcome to the Mental Health FAQ Chatbot!")
 print("Ask a question or enter 'quit' to exit.")
@@ -78,8 +90,3 @@ while True:
 
     print("Chatbot: " + response)
 # Save the trained model and vectorizer using pickle
-with open('trained_model.pkl', 'wb') as model_file:
-    pickle.dump(model, model_file)
-
-with open('vectorizer.pkl', 'wb') as vectorizer_file:
-    pickle.dump(vectorizer, vectorizer_file)
